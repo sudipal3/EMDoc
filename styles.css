@@ -1,0 +1,310 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header */
+header {
+    background-color: white;
+    color: navy;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Space between the logo and the title */
+    align-items: center; /* Align items vertically in the center */
+}
+
+/* Image in Header */
+#header-logo {
+    height: 80px; /* Adjust the size of the logo */
+    margin-left: 0; /* Space between the logo and the title (if needed) */
+}
+
+/* Title Text */
+header h1 {
+    margin: 0;
+    text-align: left; /* Align the title text to the left */
+    font-family: 'Charter', serif; /* Set the font to Charter */
+    font-style: italic; /* Make the font italic */
+    flex-grow: 1; /* Allows the title to take up remaining space */
+    margin-right: 100px; /* Move the title 100px from the right */
+}
+
+/* Navigation */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: navy;
+    overflow: hidden;
+}
+
+nav ul li {
+    float: left;
+    display: inline;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Main Content Layout */
+main {
+    padding: 20px;
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+/* Home Section */
+#home {
+    margin-right: 500px; /* Reserve space on the right for Procedures */
+}
+
+/* Clinical Decision Tools Section */
+#decision-tools {
+    position: absolute;
+    top: 20px; /* Align with Procedures */
+    right: 400px; /* Adjusted right offset for even spacing */
+    width: 250px;
+    text-align: left;
+}
+
+/* Remove bullets from Decision Tools list */
+#decision-tools ul {
+    list-style-type: none; /* Removes bullets */
+    padding-left: 0; /* Removes any left padding */
+}
+
+#decision-tools ul li {
+    margin-bottom: 2px; /* Reduced space between the buttons */
+}
+
+/* Link Styles for Decision Tools Section */
+#decision-tools ul li a {
+    display: block;
+    background-color: white;
+    color: navy;
+    border: 2px solid navy;
+    padding: 2px 5px; /* Reduced padding for a smaller button size */
+    margin: 2px 0; /* Space between each link to match Procedures */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+    max-width: 120px; /* Set a max-width for the buttons */
+}
+
+/* Hover effect for the Decision Tools links */
+#decision-tools ul li a:hover {
+    background-color: navy;
+    color: white;
+}
+
+/* Procedures Column */
+#procedures {
+    position: absolute;
+    top: 48px; /* Aligns with Clinical Decision Tools */
+    right: 250px; /* Matches the right offset of Decision Tools */
+    width: 150px;
+    text-align: left;
+}
+
+/* Remove bullets from Procedures list */
+#procedures ul {
+    list-style-type: none; /* Removes bullets */
+    padding-left: 0; /* Removes any left padding */
+}
+
+/* Link Styles for Procedures Section */
+#procedures ul li a {
+    display: block;
+    background-color: white;
+    color: navy;
+    border: 2px solid navy;
+    padding: 2px 5px; /* Reduced padding for a smaller button size */
+    margin: 2px 0; /* Space between each link */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+    max-width: 120px; /* Set a max-width for the buttons */
+}
+
+/* Hover effect for the Procedures links */
+#procedures ul li a:hover {
+    background-color: navy;
+    color: white;
+}
+
+/* Contact Section */
+#contact {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: auto;
+}
+
+/* Footer */
+footer {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+/* INPUT/OUTPUT PROCEDURE STYLES */
+
+/* Container for Form and Output */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    gap: 20px;
+}
+
+/* Form Section */
+.form-section {
+    background-color: #f4f4f4;
+    padding: 10px; /* Reduced padding for a more compact layout */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 45%;
+}
+
+.input-group h3 {
+    margin: 5px 0; /* Reduced space above and below h3 */
+    line-height: 1.0; /* Tighter line height */
+    font-size: 16px;
+}
+
+
+
+/* Button Styles */
+button {
+    background-color: white;
+    color: navy;
+    border: 2px solid navy;
+    padding: 2px 5px; /* Smaller padding for buttons */
+    margin: 2px 0; /* Reduced space between buttons */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 12px; /* Slightly smaller font size */
+}
+
+/* Pressed button style */
+button.pressed {
+    background-color: navy;
+    color: white;
+}
+
+textarea {
+    display: block; /* Forces the textarea to occupy a full line */
+    width: 85%;
+    margin-top: 5px; /* Reduced space above textarea */
+    padding: 5px; /* Reduced padding inside textarea */
+    font-size: 12px;
+    resize: vertical; /* Allows users to resize the textarea vertically */
+    height: 20px; /* Adjusted height for a more compact layout */
+    font-family: Arial, sans-serif;
+    line-height: 1.2; /* Tighter line height */
+}
+
+button + textarea {
+    margin-top: 5px; /* Ensures there's minimal space between the last button and the textarea */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Output Section */
+.output-section {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 45%;
+}
+
+#outputArea {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 150px;
+    margin-bottom: 100px;
+}
+
+/* --- Collapsible sections --- */
+.collapsible-wrap { margin: 1rem 0; border-top: 1px solid #eee; }
+.collapsible {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  background: transparent;
+  border: 0;
+  padding: .6rem 0;
+  cursor: pointer;
+  font: inherit;
+}
+.collapsible-title {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.2em;
+}
+.chevron::before { content: "▸"; display: inline-block; transition: transform .15s ease; }
+.collapsible[aria-expanded="true"] .chevron::before { content: "▾"; }
+
+.collapsible-content { display: none; padding: .25rem 0 .5rem; }
+.collapsible[aria-expanded="true"] + .collapsible-content { display: block; }
+
+#sepsis-criteria {
+    font-size: 0.8rem;   /* Adjust smaller or larger as desired */
+    line-height: 1.2;
+}
+
+#sepsis-criteria h3 {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+#sepsis-criteria ul {
+    margin-left: 20px;
+}
+
+button.blue-toggle {
+  background-color: #87ceeb;
+  color: white;
+  border: 2px solid #000080;
+}
+
+button.blue-toggle.pressed {
+  background-color: #000080;
+  color: white;
+  border: 2px solid #000080;
+}
+

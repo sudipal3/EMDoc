@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shift Handover</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    nav{
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 16px;
+    }
+    nav ul{ list-style: none; margin: 0; padding: 0; }
+    nav li{ display: inline-block; margin-right: 10px; }
+    nav a{ text-decoration: none; color: navy; font-weight: bold; }
+
+    .container{
+      max-width: 1100px;
+      margin: 18px auto;
+      padding: 0 14px;
+    }
+
+    .form-section{
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    h2{ margin-top: 0; color: #0b1a4a; }
+    h3{ margin-bottom: 8px; color: #0b1a4a; }
+
+    .input-group{
+      margin: 14px 0 18px 0;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    button{
+      background: #d7ecff;        /* light blue default */
+      color: #0b1a4a;
+      border: 1px solid #b7d8ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin: 6px 6px 0 0;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.15s ease, color 0.15s ease, border 0.15s ease;
+    }
+
+    button.active{
+      background: #0b2a8f;        /* dark blue when selected */
+      color: #fff;
+      border-color: #0b2a8f;
+    }
+
+    textarea{
+      width: 100%;
+      min-height: 54px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    .actions{
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn{
+      background: #0b1a4a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .action-btn:hover{ opacity: 0.92; }
+
+    #outputArea{
+      margin-top: 14px;
+      background: #f9fbff;
+      border: 1px solid #d9e6ff;
+      border-radius: 10px;
+      padding: 14px;
+      white-space: pre-wrap;
+    }
+
+    .output-section{
+      margin-bottom: 10px;
+    }
+
+    .small-note{
+      font-size: 12px;
+      color: #666;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>Shift Handover Note</h2>
+
+      <div class="small-note">
+        Click buttons to add standardized content. Add free text per section as needed. Multiple buttons per section are allowed.
+      </div>
+
+      <!-- PATIENT SUMMARY -->
+      <div class="input-group">
+        <h3>Patient Summary</h3>
+        <button data-section="patientSummary" onclick="handleButtonClick(this, 'Accepted handoff at shift change; reviewed chart and current plan.')">Accepted handoff</button>
+        <button data-section="patientSummary" onclick="handleButtonClick(this, 'Primary reason for visit reviewed; current working diagnosis discussed.')">Reason/diagnosis reviewed</button>
+        <button data-section="patientSummary" onclick="handleButtonClick(this, 'ED course and key events reviewed with outgoing nurse.')">Course reviewed</button>
+        <textarea data-freetext="patientSummary" placeholder=""></textarea>
+      </div>
+
+      <!-- STATUS -->
+      <div class="input-group">
+        <h3>Current Status</h3>
+        <button data-section="currentStatus" onclick="handleButtonClick(this, 'Hemodynamically stable.')">Stable</button>
+        <button data-section="currentStatus" onclick="handleButtonClick(this, 'Intermittent tachycardia noted; monitoring ongoing.')">Tachycardia</button>
+        <button data-section="currentStatus" onclick="handleButtonClick(this, 'Requires supplemental oxygen; respiratory status being monitored closely.')">On oxygen</button>
+        <button data-section="currentStatus" onclick="handleButtonClick(this, 'Pain requiring ongoing reassessment and treatment.')">Pain ongoing</button>
+        <textarea data-freetext="currentStatus" placeholder=""></textarea>
+      </div>
+
+      <!-- INTERVENTIONS -->
+      <div class="input-group">
+        <h3>Interventions This Shift</h3>
+        <button data-section="interventions" onclick="handleButtonClick(this, 'Medications administered per MAR; response monitored.')">Meds given</button>
+        <button data-section="interventions" onclick="handleButtonClick(this, 'IV access obtained and patent; fluids administered as ordered.')">IV/fluids</button>
+        <button data-section="interventions" onclick="handleButtonClick(this, 'Patient reassessed after interventions; provider updated as needed.')">Reassessments</button>
+        <button data-section="interventions" onclick="handleButtonClick(this, 'Patient education provided and questions answered.')">Education</button>
+        <textarea data-freetext="interventions" placeholder=""></textarea>
+      </div>
+
+      <!-- PENDING / TASKS -->
+      <div class="input-group">
+        <h3>Pending Items / Tasks</h3>
+        <button data-section="pending" onclick="handleButtonClick(this, 'Pending labs at time of handoff.')">Pending labs</button>
+        <button data-section="pending" onclick="handleButtonClick(this, 'Pending imaging at time of handoff.')">Pending imaging</button>
+        <button data-section="pending" onclick="handleButtonClick(this, 'Awaiting consultant recommendations.')">Awaiting consult</button>
+        <button data-section="pending" onclick="handleButtonClick(this, 'Disposition pending; continue monitoring and update provider with changes.')">Disposition pending</button>
+        <textarea data-freetext="pending" placeholder=""></textarea>
+      </div>
+
+      <!-- SAFETY / PRECAUTIONS -->
+      <div class="input-group">
+        <h3>Safety / Precautions</h3>
+        <button data-section="safety" onclick="handleButtonClick(this, 'High fall risk precautions maintained.')">Fall risk</button>
+        <button data-section="safety" onclick="handleButtonClick(this, 'Seizure precautions in place.')">Seizure precautions</button>
+        <button data-section="safety" onclick="handleButtonClick(this, 'Aspiration precautions maintained.')">Aspiration precautions</button>
+        <button data-section="safety" onclick="handleButtonClick(this, 'Line/tube safety reviewed; sites clean/dry/intact.')">Lines/tubes OK</button>
+        <textarea data-freetext="safety" placeholder=""></textarea>
+      </div>
+
+      <!-- COMMUNICATION -->
+      <div class="input-group">
+        <h3>Communication</h3>
+        <button data-section="communication" onclick="handleButtonClick(this, 'Outgoing nurse report received; opportunity for questions provided.')">Report received</button>
+        <button data-section="communication" onclick="handleButtonClick(this, 'Provider updated regarding current status and pending items.')">Provider updated</button>
+        <button data-section="communication" onclick="handleButtonClick(this, 'Family/patient updated regarding plan of care.')">Family updated</button>
+        <textarea data-freetext="communication" placeholder=""></textarea>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="action-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button class="action-btn" onclick="clearAll()">Clear</button>
+      </div>
+
+      <!-- OUTPUT (immediately below Copy/Clear) -->
+      <div id="outputArea"></div>
+    </div>
+  </div>
+
+<script>
+  // Define the order of sections
+  const sectionOrder = [
+    'patientSummary',
+    'currentStatus',
+    'interventions',
+    'pending',
+    'safety',
+    'communication'
+  ];
+
+  // Store selected button texts per section
+  const selectedBySection = {
+    patientSummary: [],
+    currentStatus: [],
+    interventions: [],
+    pending: [],
+    safety: [],
+    communication: []
+  };
+
+  // Human-friendly labels
+  const sectionLabels = {
+    patientSummary: 'Patient Summary',
+    currentStatus: 'Current Status',
+    interventions: 'Interventions This Shift',
+    pending: 'Pending Items / Tasks',
+    safety: 'Safety / Precautions',
+    communication: 'Communication'
+  };
+
+  // Button click handler (toggle add/remove)
+  function handleButtonClick(button, text) {
+    const section = button.getAttribute('data-section');
+    const arr = selectedBySection[section];
+
+    const idx = arr.indexOf(text);
+
+    if (idx === -1) {
+      // Select
+      arr.push(text);
+      button.classList.add('active');
+    } else {
+      // Unselect
+      arr.splice(idx, 1);
+      button.classList.remove('active');
+    }
+
+    renderOutput();
+  }
+
+  // Build output in correct order, including free text appended
+  function renderOutput() {
+    const outputArea = document.getElementById('outputArea');
+    outputArea.innerHTML = '';
+
+    sectionOrder.forEach(section => {
+      const buttonTexts = selectedBySection[section];
+      const freeText = getFreeText(section);
+
+      // If nothing selected and no freetext, skip
+      if (buttonTexts.length === 0 && !freeText.trim()) return;
+
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'output-section';
+
+      const label = sectionLabels[section] || section;
+
+      // Build section body
+      let bodyParts = [];
+      if (buttonTexts.length) bodyParts.push(buttonTexts.join(' ')); // sentences already
+      if (freeText.trim()) bodyParts.push(freeText.trim());
+
+      sectionDiv.innerHTML = `<strong>${label}:</strong> ${bodyParts.join(' ')}`;
+      outputArea.appendChild(sectionDiv);
+    });
+  }
+
+  function getFreeText(section) {
+    const textarea = document.querySelector(`textarea[data-freetext="${section}"]`);
+    return textarea ? textarea.value : '';
+  }
+
+  // Re-render when typing into any free text box
+  document.addEventListener('input', (e) => {
+    if (e.target && e.target.matches('textarea[data-freetext]')) {
+      renderOutput();
+    }
+  });
+
+  // Copy output
+  function copyToClipboard() {
+    const outputText = buildPlainTextOutput();
+    if (!outputText.trim()) {
+      alert('Nothing to copy yet.');
+      return;
+    }
+
+    navigator.clipboard.writeText(outputText)
+      .then(() => alert('Copied to clipboard.'))
+      .catch(() => alert('Copy failed. Your browser may not allow clipboard access.'));
+  }
+
+  function buildPlainTextOutput() {
+    let lines = [];
+    sectionOrder.forEach(section => {
+      const buttonTexts = selectedBySection[section];
+      const freeText = getFreeText(section);
+
+      if (buttonTexts.length === 0 && !freeText.trim()) return;
+
+      const label = sectionLabels[section] || section;
+      let bodyParts = [];
+      if (buttonTexts.length) bodyParts.push(buttonTexts.join(' '));
+      if (freeText.trim()) bodyParts.push(freeText.trim());
+
+      lines.push(`${label}: ${bodyParts.join(' ')}`);
+    });
+
+    return lines.join('\n');
+  }
+
+  // Clear everything
+  function clearAll() {
+    // Clear selections
+    Object.keys(selectedBySection).forEach(k => selectedBySection[k] = []);
+
+    // Clear active button states
+    document.querySelectorAll('button[data-section]').forEach(btn => btn.classList.remove('active'));
+
+    // Clear textareas
+    document.querySelectorAll('textarea[data-freetext]').forEach(t => t.value = '');
+
+    renderOutput();
+  }
+
+  // Initial render (empty)
+  renderOutput();
+</script>
+</body>
+</html>
