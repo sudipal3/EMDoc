@@ -266,3 +266,24 @@ button:hover {
     height: 45px;       /* adjust to your preference */
     width: auto;
 }
+
+.title-header {
+    display: flex;
+    align-items: baseline; /* aligns text nicely */
+    gap: 12px;
+    padding: 10px;
+    background-color: navy;
+}
+
+.site-title {
+    font-size: 38px;
+    font-family: "Fredoka", system-ui, sans-serif;
+}
+
+.tagline {
+    font-size: 26px;
+    color: white;
+    font-family: "Pacifico", cursive;
+    opacity: 0.9;
+    white-space: nowrap;
+}
