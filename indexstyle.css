@@ -262,9 +262,12 @@ button:hover {
     padding: 10px;
 }
 
-.cosm-logo {
-    height: 45px;       /* adjust to your preference */
+.header-icon {
+    height: 30px;          /* small, subtle */
     width: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    opacity: 1.0;
 }
 
 .title-header {
