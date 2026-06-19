@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>pARC Appendicitis Risk Calculator</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<nav>
+<ul>
+<li><a href="index.html#home">Home</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<div class="form-section">
+
+<h2>pARC Appendicitis Risk Calculator</h2>
+
+<div class="input-group">
+<h3>Age</h3>
+<input type="number" id="ageInput" onchange="calculateScore()">
+</div>
+
+<div class="input-group">
+<h3>Sex</h3>
+
+<button onclick="handleButtonClick(this,'sex','male')">
+Male
+</button>
+
+<button onclick="handleButtonClick(this,'sex','female')">
+Female
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>Duration of Pain</h3>
+
+<button onclick="handleButtonClick(this,'duration','lt24')">
+&lt;24 hours
+</button>
+
+<button onclick="handleButtonClick(this,'duration','24to48')">
+24 to 48 hours
+</button>
+
+<button onclick="handleButtonClick(this,'duration','48to96')">
+48 to 96 hours
+</button>
+
+<button onclick="handleButtonClick(this,'duration','gt96')">
+≥96 hours
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>Pain with Walking</h3>
+
+<button onclick="handleButtonClick(this,'walking',true)">
+Yes
+</button>
+
+<button onclick="handleButtonClick(this,'walking',false)">
+No
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>Migration of Pain to RLQ</h3>
+
+<button onclick="handleButtonClick(this,'migration',true)">
+Yes
+</button>
+
+<button onclick="handleButtonClick(this,'migration',false)">
+No
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>Maximal RLQ Tenderness</h3>
+
+<button onclick="handleButtonClick(this,'rlq',true)">
+Yes
+</button>
+
+<button onclick="handleButtonClick(this,'rlq',false)">
+No
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>Guarding</h3>
+
+<button onclick="handleButtonClick(this,'guarding',true)">
+Yes
+</button>
+
+<button onclick="handleButtonClick(this,'guarding',false)">
+No
+</button>
+
+</div>
+
+<div class="input-group">
+<h3>WBC (cells × 10³/µL)</h3>
+
+<input
+type="number"
+step="0.1"
+id="wbcInput"
+onchange="calculateScore()">
+
+</div>
+
+<div class="input-group">
+<h3>Neutrophil % (optional)</h3>
+
+<input
+type="number"
+step="1"
+id="neutrophilInput"
+placeholder="Example: 72"
+onchange="calculateScore()">
+
+</div>
+
+</div>
+
+<div class="output-section">
+
+<div id="parcScoreOutput"></div>
+
+<br>
+
+<button onclick="clearOutput()">
+Clear
+</button>
+
+<button onclick="copyToClipboard()">
+Copy to Clipboard
+</button>
+
+</div>
+
+</div>
+
+<footer></footer>
+
+<script src="pARCscript.js"></script>
+
+</body>
+</html>
