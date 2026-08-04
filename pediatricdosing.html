@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pediatric Ibuprofen/Tylenol Dosing</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html#home">Home</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="form-section">
+      <h2>Pediatric Ibuprofen/Tylenol Dosing</h2>
+
+      <div class="input-group">
+        <h3>Weight</h3>
+        <label>
+          Weight (kg):
+          <input
+            type="number"
+            id="pediatricWeightInput"
+            min="0"
+            max="200"
+            step="0.1"
+            oninput="calculatePediatricDosing()"
+          />
+        </label>
+      </div>
+    </div>
+
+    <div class="output-section">
+      <div id="pediatricDosingOutput"></div>
+      <button onclick="clearPediatricDosing()">Clear</button>
+      <button onclick="copyPediatricDosing()">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <script src="pediatricdosingscript.js"></script>
+</body>
+</html>
