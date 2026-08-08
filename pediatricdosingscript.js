@@ -41,7 +41,7 @@ function calculatePediatricDosing() {
     <p>
       To best treat your child's fever or discomfort, it is important to give
       the correct dose of ibuprofen (Motrin) or acetaminophen (Tylenol) at the
-      correct frequency. Both medications can be given every six hours with the best recommendation being to each medication every three hours. Do not give ibuprofen to a child younger than 6 months unless
+      correct frequency. Both medications can be given every six hours and it is recommended to alternate each medication every three hours. Do not give ibuprofen to a child younger than 6 months unless
       specifically instructed by a healthcare professional.
     </p>
 
